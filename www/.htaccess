@@ -7,7 +7,9 @@ Options -Indexes
 #########################
 ### MOD EXPIRE ###
 #########################
-Header unset ETag
+<IfModule mod_headers.c>
+	Header unset ETag
+</IfModule>
 FileETag None
 <IfModule mod_expires.c>
 	# mise en cache des fichiers CSS et JavaScript
