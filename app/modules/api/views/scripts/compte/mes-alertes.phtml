@@ -74,28 +74,28 @@
                     'action' => 'config', 'controller' => 'mes-alertes',
                     'module' => 'api', 'id' => $alert->id
                 ), 'default'); ?>"
-                title="Configuration avancé de l'alerte."><img src="/images/icons/32x32/config.png" alt="" /></a>
+                title="Configuration avancé de l'alerte."><img src="<?php echo $this->baseUrl(); ?>/images/icons/32x32/config.png" alt="" /></a>
             	<?php if ($alert->stop) : ?>
             	<a href="<?php echo $this->url(array(
             	    'action' => 'reprendre', 'controller' => 'mes-alertes',
             	    'module' => 'api', 'id' => $alert->id
-            	), 'default'); ?>"><img src="/images/icons/32x32/resume.png" alt="Rependre" title="Cliquer pour reprendre cette alerte" /></a>
+            	), 'default'); ?>"><img src="<?php echo $this->baseUrl(); ?>/images/icons/32x32/resume.png" alt="Rependre" title="Cliquer pour reprendre cette alerte" /></a>
             	<?php else : ?>
             	<a href="<?php echo $this->url(array(
             	    'action' => 'suspendre', 'controller' => 'mes-alertes',
             	    'module' => 'api', 'id' => $alert->id
-            	), 'default'); ?>"><img src="/images/icons/32x32/pause.png" alt="Suspendre" title="Cliquer pour suspendre cette alerte" /></a>
+            	), 'default'); ?>"><img src="<?php echo $this->baseUrl(); ?>/images/icons/32x32/pause.png" alt="Suspendre" title="Cliquer pour suspendre cette alerte" /></a>
             	<?php endif; ?>
         		<a href="<?php echo $this->url(array(
         		    'action' => 'creer', 'controller' => 'feed',
         		    'module' => 'default'
         		), 'default'); ?>?link=<?php echo $this->escape(base64_encode($alert->link)); ?>"
-        		title="Flux RSS de la recherche"><img src="/images/icons/32x32/rss.png" alt="" /></a>
+        		title="Flux RSS de la recherche"><img src="<?php echo $this->baseUrl(); ?>/images/icons/32x32/rss.png" alt="" /></a>
         		<a href="<?php echo $this->url(array(
         		    'action' => 'supprimer', 'controller' => 'mes-alertes',
         		    'module' => 'api', 'id' => $alert->id
         		), 'default'); ?>"
-        		title="Supprimer cette alerte"><img src="/images/icons/32x32/remove.png" alt="" /></a>
+        		title="Supprimer cette alerte"><img src="<?php echo $this->baseUrl(); ?>/images/icons/32x32/remove.png" alt="" /></a>
         	</div>
         </div>
     </li>

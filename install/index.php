@@ -98,7 +98,7 @@ if (!isset($_POST["key"])) {
         
         <?php if (isset($installed)) : ?>
         <p>Installation terminée.</p>
-        <p><a href="/">Retour à l'application.</a></p>
+        <p><a href="<?php echo $this->baseUrl(); ?>">Retour à l'application.</a></p>
         <?php else: ?>
         <?php if ($checkWritable) : ?>
         <ul>
