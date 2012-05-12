@@ -9,18 +9,18 @@
         <meta name="description" content="<?php echo $this->description; ?>" />
         <?php endif; ?>
         <?php
-        $this->headLink()->prependStylesheet('/css/'.APPLICATION_REV.'/styles.css', 'all,handheld');
+        $this->headLink()->prependStylesheet($this->baseUrl() . '/css/'.APPLICATION_REV.'/styles.css', 'all,handheld');
         echo $this->headLink().$this->headStyle();
         ?>
-        <script src="/js/<?php echo APPLICATION_REV; ?>/prefixfree.min.js"></script>
+        <script src="<?php echo $this->baseUrl(); ?>/js/<?php echo APPLICATION_REV; ?>/prefixfree.min.js"></script>
     </head>
     <body>
         <div id="header">
             <div class="content">
-                <h1><a href="/">Alerte Leboncoin</a></h1>
+                <h1><a href="<?php echo $this->baseUrl(); ?>">Alerte Leboncoin</a></h1>
             </div>
             <ul id="main-menu">
-                <li<?php echo $this->requestController == 'index'?' class="active"':''; ?>><a href="/">Accueil</a></li>
+                <li<?php echo $this->requestController == 'index'?' class="active"':''; ?>><a href="<?php echo $this->baseUrl(); ?>">Accueil</a></li>
                 <li<?php echo $this->requestController == 'alerte-mail'?' class="active"':''; ?>><a href="<?php echo $this->url(array(
                     'action' => 'creer', 'controller' => 'alerte-mail', 'module' => 'default'
                 ), 'default', true); ?>" title="Alerte Mail leboncoin">Alerte mail</a></li>
