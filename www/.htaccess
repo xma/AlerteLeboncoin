@@ -33,8 +33,8 @@ RewriteBase /
 RewriteRule ^index\.php/(.+) /$1 [L,R=301]
 
 # redirection des ressources pour gestion du cache
-RewriteRule ^css/[.0-9]+/(.*)$ /css/$1 [L]
-RewriteRule ^js/[.0-9]+/(.*)$ ./js/$1 [L]
+RewriteRule ^css/[.0-9]+/(.*)$ css/$1 [L]
+RewriteRule ^js/[.0-9]+/(.*)$ js/$1 [L]
 
 # ne redirige pas les dossiers et fichiers symboliques
 RewriteCond %{REQUEST_FILENAME} -s [OR]
