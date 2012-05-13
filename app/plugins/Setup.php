@@ -16,6 +16,12 @@ class Plugin_Setup extends Zend_Controller_Plugin_Abstract
 
 	public function dispatchLoopStartup(Zend_Controller_Request_Abstract $request)
 	{
+        if (!APPLICATION_INSTALLED && ($this->_request->getActionName() != "index"
+            || $this->_request->getControllerName() != "install"
+            || $this->_request->getModuleName() != "default")) {
+            Zend_Controller_Action_HelperBroker::getStaticHelper("redirector")
+                ->direct("index", "install", "default");
+        }
 		$view = Zend_Layout::getMvcInstance()->getView();
 		$view->requestModule = $request->getModuleName();
 		$view->requestController = $request->getControllerName();

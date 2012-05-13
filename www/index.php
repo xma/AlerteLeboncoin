@@ -27,9 +27,9 @@ $config->merge(new Zend_Config_Ini($confDir."/sys.ini"));
 
 try {
     $config->merge(new Zend_Config_Ini($confDir."/config.ini"));
+    define("APPLICATION_INSTALLED", true);
 } catch (Zend_Config_Exception $e) {
-    require APPLICATION_PATH."/../install/index.php";
-    exit;
+    define("APPLICATION_INSTALLED", false);
 }
 $application->setOptions($config->toArray())
     ->bootstrap()->run();

@@ -1,0 +1,21 @@
+
+<?php if (isset($this->installed)) : ?>
+<h2>Installation terminée.</h2>
+<p>Vous pouvez maintenant vous <a href="<?php echo $this->url(array(
+    "action" => "mes-alertes", "controller" => "compte", "module" => "api"
+), "default", true); ?>">connecter</a>.</p>
+<?php return; endif; ?>
+
+<h2>Installation de l'application</h2>
+
+<?php if (isset($this->criticalError)) : ?>
+<p class="color: #EF0000;"><?php echo $this->criticalError; ?></p>
+<?php return; endif; ?>
+
+<?php if (isset($this->errors)) : ?>
+<ul style="color: #EF0000;">
+    <li><?php echo implode("</li><li>", $this->errors); ?></li>
+</ul>
+<?php endif; ?>
+
+<?php echo $this->form; ?>
