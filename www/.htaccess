@@ -28,7 +28,6 @@ AddOutputFilterByType DEFLATE application/javascript application/x-javascript te
 
 
 RewriteEngine On
-RewriteBase /
 
 RewriteRule ^index\.php/(.+) /$1 [L,R=301]
 
