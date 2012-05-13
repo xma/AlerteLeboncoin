@@ -138,20 +138,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     public function _initSession()
     {
-        $this->bootstrap("db");
-//         $adapter = Zend_Db_Table::getDefaultAdapter();
-//         if (!$adapter->getConnection()) {
-//             return;
-//         }
-        Zend_Session::setSaveHandler(
-            new Zend_Session_SaveHandler_DbTable(array(
-                "name" => "Session",
-                "primary" => "id",
-                "modifiedColumn" => "modified",
-                "dataColumn" => "data",
-                "lifetimeColumn" => "lifetime"
-            ))
-        );
         Zend_Session::start(array(
             "cookie_lifetime" => 0,
             "use_only_cookies" => 1,
