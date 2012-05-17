@@ -77,8 +77,10 @@ class Service_User
             if ($remember_me) {
                 Zend_Session::rememberMe(365*24*3600);
                 $saveHandler = Zend_Session::getSaveHandler();
-                $saveHandler->setLifetime(365*24*3600)
-                    ->setOverrideLifetime(true);
+                if ($saveHandler) {
+                    $saveHandler->setLifetime(365*24*3600)
+                        ->setOverrideLifetime(true);
+                }
             }
             Zend_Auth::getInstance()->getStorage()->write($user);
         }
