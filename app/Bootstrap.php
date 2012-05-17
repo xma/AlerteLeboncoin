@@ -72,9 +72,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     protected function _initCache()
     {
         $this->bootstrap("autoloader");
+        $cache_dir = realpath(APPLICATION_PATH."/../var/tmp");
+        if (!is_writable($cache_dir)) {
+            return null;
+        }
         $cache = Zend_Cache::factory("Core", "File",
             array("automatic_serialization" => true),
-            array("cache_dir" => realpath(APPLICATION_PATH."/../var/tmp"))
+            array("cache_dir" => $cache_dir)
         );
         $cache->clean(Zend_Cache::CLEANING_MODE_OLD);
         Zend_Registry::set("Zend_Cache", $cache);
