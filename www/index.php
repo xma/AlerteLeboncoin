@@ -1,7 +1,7 @@
 <?php
 
 define("APPLICATION_REV", "1.4");
-define("APPLICATION_VERSION", "0.1");
+define("APPLICATION_VERSION", "0.2");
 
 defined("APPLICATION_PATH")
     || define("APPLICATION_PATH", realpath(dirname(__FILE__) . "/../app"));
