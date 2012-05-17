@@ -42,8 +42,15 @@ class Service_LeBonCoin
         foreach ($results AS $result) {
             $ad = new Model_LeBonCoin_Ad();
             $ad->setProfessionnal(false)->setUrgent(false);
-            preg_match('/([0-9]+)\.htm.*/', $result->parentNode->getAttribute("href"), $m);
-            $ad->setLink($result->parentNode->getAttribute("href"))
+            $aTags = $result->getElementsByTagName("a");
+            if (!$aTags->length) {
+                continue;
+            }
+            $a = $aTags->item(0);
+            if (!preg_match('/([0-9]+)\.htm.*/', $a->getAttribute("href"), $m)) {
+                continue;
+            }
+            $ad->setLink($a->getAttribute("href"))
                 ->setId($m[1]);
             foreach ($result->getElementsByTagName("div") AS $node) {
                 if ($node->hasAttribute("class")) {
