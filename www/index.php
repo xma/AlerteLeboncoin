@@ -1,7 +1,7 @@
 <?php
 
 define("APPLICATION_REV", "1.4");
-define("APPLICATION_VERSION", "0.1");
+define("APPLICATION_VERSION", "0.2");
 
 defined("APPLICATION_PATH")
     || define("APPLICATION_PATH", realpath(dirname(__FILE__) . "/../app"));
@@ -27,9 +27,9 @@ $config->merge(new Zend_Config_Ini($confDir."/sys.ini"));
 
 try {
     $config->merge(new Zend_Config_Ini($confDir."/config.ini"));
+    define("APPLICATION_INSTALLED", true);
 } catch (Zend_Config_Exception $e) {
-    require APPLICATION_PATH."/../install/index.php";
-    exit;
+    define("APPLICATION_INSTALLED", false);
 }
 $application->setOptions($config->toArray())
     ->bootstrap()->run();

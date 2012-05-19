@@ -54,13 +54,14 @@ class Model_Mail_NewPassword extends Model_Mail
         $this->setSubject('Votre nouveau mot de passe');
         $this->addTo($this->_user->getEmail());
         
+        $view = Zend_Layout::getMvcInstance()->getView();
         $this->setBodyText('Bonjour,
 Un nouveau mot de passe vous a été attribué. Vous pouvez à tout moment le changer en vous connectant à votre compte.
 
 Login : '.$this->_user->getEmail().'
 Mot de passe : '.$this->getPassword().'
 
-http://'.$_SERVER["HTTP_HOST"].'/api/compte
+http://'.$_SERVER["HTTP_HOST"].$view->baseUrl().'/api/compte
 
 Alerte LeBonCoin');
         
