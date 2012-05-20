@@ -2,11 +2,11 @@
 
 <p style="font-size: 14px;">
     <a href="<?php echo $this->escape($this->alert->link); ?>">[Adresse de recherche]</a>
-    <a href="http://<?php echo $_SERVER["HTTP_HOST"].$this->baseUrl().$this->url(array(
+    <a href="http://<?php echo $_SERVER["HTTP_HOST"].$this->url(array(
             'controller' => 'alerte-mail', 'action' => 'supprimer',
             'module' => 'default', 'key' => $this->alert->control_key), 'default', true);
     ?>" style="color: #FF0000;">[supprimer l'alerte]</a>
-    <a href="http://<?php echo $_SERVER["HTTP_HOST"].$this->baseUrl().$this->url(array(
+    <a href="http://<?php echo $_SERVER["HTTP_HOST"].$this->url(array(
             'action' => 'mes-alertes', 'controller' => 'compte',
             'module' => 'api'), 'default', true);
     ?>">[accéder à mon compte]</a>
@@ -20,11 +20,11 @@
 
 <p style="font-size: 14px;">
     <a href="<?php echo $this->escape($this->alert->link); ?>">[Adresse de recherche]</a>
-    <a href="http://<?php echo $_SERVER["HTTP_HOST"].$this->baseUrl().$this->url(array(
+    <a href="http://<?php echo $_SERVER["HTTP_HOST"].$this->url(array(
             'controller' => 'alerte-mail', 'action' => 'supprimer',
             'module' => 'default', 'key' => $this->alert->control_key), 'default', true);
     ?>" style="color: #FF0000;">[supprimer l'alerte]</a>
-    <a href="http://<?php echo $_SERVER["HTTP_HOST"].$this->baseUrl().$this->url(array(
+    <a href="http://<?php echo $_SERVER["HTTP_HOST"].$this->url(array(
             'action' => 'mes-alertes', 'controller' => 'compte',
             'module' => 'api'), 'default', true);
     ?>">[accéder à mon compte]</a>
