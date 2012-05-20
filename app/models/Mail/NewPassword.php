@@ -51,6 +51,7 @@ class Model_Mail_NewPassword extends Model_Mail
     
     public function send($transport = null)
     {
+        $controllerRouter = Zend_Controller_Front::getInstance()->getRouter();
         $this->setSubject('Votre nouveau mot de passe');
         $this->addTo($this->_user->getEmail());
         
@@ -61,7 +62,8 @@ Un nouveau mot de passe vous a été attribué. Vous pouvez à tout moment le ch
 Login : '.$this->_user->getEmail().'
 Mot de passe : '.$this->getPassword().'
 
-http://'.$_SERVER["HTTP_HOST"].$view->baseUrl().'/api/compte
+http://'.$_SERVER["HTTP_HOST"].$controllerRouter->assemble(array(
+    'module' => 'api', 'controller' => 'compte'), 'default', true).'
 
 Alerte LeBonCoin');
         

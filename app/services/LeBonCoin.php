@@ -270,6 +270,7 @@ class Service_LeBonCoin
         $row->save();
 
         if ($user === null) {
+            $controllerRouter = Zend_Controller_Front::getInstance()->getRouter();
             $mail = new Zend_Mail('utf-8');
             $config = Zend_Registry::get("config");
             if ($config->email && $config->email->from) {
@@ -279,9 +280,15 @@ class Service_LeBonCoin
             $mail->setSubject('Validation de votre alerte');
             $mail->setBodyText(
                 'Validez l\'alerte à l\'aide du lien suivant :'."\n".
-                'http://'.$_SERVER["HTTP_HOST"].'/alerte-mail/valider/key/'.$row->control_key."\n\n".
+                'http://'.$_SERVER["HTTP_HOST"].$controllerRouter->assemble(array(
+                    'module' => 'default', 'controller' => 'alerte-mail',
+                    'action' => 'valider', 'key' => $row->control_key,
+                ), 'default', true)."\n\n".
                 'Vous pouvez supprimer l\'alerte à tout moment en cliquant sur ce lien :'."\n".
-                'http://'.$_SERVER["HTTP_HOST"].'/alerte-mail/supprimer/key/'.$row->control_key."\n\n".
+                'http://'.$_SERVER["HTTP_HOST"].$controllerRouter->assemble(array(
+                    'module' => 'default',   'controller' => 'alerte-mail',
+                    'action' => 'supprimer', 'key' => $row->control_key,
+                ), 'default', true)."\n\n".
                 'Rappel de votre recherche leboncoin :'."\n".
                 $link."\n\n"
             );
