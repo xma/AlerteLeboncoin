@@ -32,7 +32,12 @@ class FeedController extends Zend_Controller_Action
         $this->_helper->layout()->disableLayout(true);
 
         $id = str_replace(".rss", "", $this->_request->getParam("id"));
-        $file = APPLICATION_PATH."/../www/feed/refresh/id/".$id.".rss";
+        $file = APPLICATION_PATH.'/../www'.
+            substr($this->_helper->url->url(
+                array('module' => 'default', 'controller' => 'feed', 'action' => 'refresh', 'id' => $id.'.rss'),
+            	'default', true),
+                strlen($this->view->baseUrl())
+            );
         if (file_exists($file)) {
             $this->view->feed = file_get_contents($file);
             return;
