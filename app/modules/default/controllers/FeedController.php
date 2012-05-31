@@ -14,7 +14,8 @@ class FeedController extends Zend_Controller_Action
         $link = $this->_request->getParam('link');
         if ($link) {
             $this->_helper->redirector->gotoUrlAndExit(
-                "http://".$_SERVER["HTTP_HOST"]."/rss?link=".$link
+                "http://".$_SERVER["HTTP_HOST"].$this->_helper->url->url(array(
+                    'module' => 'default', 'controller' => 'rss', 'link' => $link), 'default', true)
             );
         } else {
             $this->_helper->redirector("index", "rss", "default");
@@ -31,7 +32,12 @@ class FeedController extends Zend_Controller_Action
         $this->_helper->layout()->disableLayout(true);
 
         $id = str_replace(".rss", "", $this->_request->getParam("id"));
-        $file = APPLICATION_PATH."/../www/feed/refresh/id/".$id.".rss";
+        $file = APPLICATION_PATH.'/../www'.
+            substr($this->_helper->url->url(
+                array('module' => 'default', 'controller' => 'feed', 'action' => 'refresh', 'id' => $id.'.rss'),
+            	'default', true),
+                strlen($this->view->baseUrl())
+            );
         if (file_exists($file)) {
             $this->view->feed = file_get_contents($file);
             return;
@@ -84,7 +90,7 @@ class FeedController extends Zend_Controller_Action
         $this->view->feed = $feed->export('rss');
 
         // mise en cache
-        if (is_writable(APPLICATION_PATH."/../www/feed/refresh/id")) {
+        if (is_writable(dirname($file))) {
             file_put_contents($file, $this->view->feed);
         }
     }

@@ -7,7 +7,7 @@ cache_time=20
 # de l'application
 pathRoot="/var/www/...../www/feed/refresh/id"
 
-if [ -e $pathRoot ]; then
-    find $pathRoot -name "*.rss" -type f -cmin +$cache_time -exec rm -f {} \;
+if [ -e "$pathRoot" ]; then
+    find "$pathRoot" -name "*.rss" -type f -cmin +$cache_time -exec rm -f {} \;
 fi
 
