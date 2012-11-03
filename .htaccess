@@ -34,6 +34,7 @@ RewriteRule ^index\.php/(.+) /$1 [L,R=301]
 # redirection des ressources pour gestion du cache
 RewriteRule ^css/[.0-9]+/(.*)$ www/css/$1 [L]
 RewriteRule ^js/[.0-9]+/(.*)$ www/js/$1 [L]
+RewriteRule ^images/(.*)$ www/images/$1 [L]
 
 # ne redirige pas les dossiers et fichiers symboliques
 RewriteCond %{REQUEST_FILENAME} -s [OR]
